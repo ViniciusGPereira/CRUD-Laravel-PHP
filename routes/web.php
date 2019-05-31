@@ -12,4 +12,6 @@
 */
 
 Route::get('/', 'HomeController@lista');
-
+Route::post('/', 'HomeController@add');
+Route::get('/del/{id}', 'HomeController@delete');
+Route::post('/update', 'HomeController@update');
