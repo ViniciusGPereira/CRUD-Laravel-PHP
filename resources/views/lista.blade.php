@@ -24,7 +24,7 @@
                     <thead>
                         <tr>
                             <th>Foto</th>
-                            <th>Título</th>
+                            <th>Título</th> 
                             <th>Descrição</th>
                             <th>Valor</th>
                             <th>Opções</th>
@@ -33,7 +33,7 @@
                     @foreach($lista as $item)
                     <tbody>
                         <tr>
-                            <td scope="row"><img src="<?php echo asset('storage/'.$item->img);?>" >  </td>
+                            <td scope="row"><img class="img_produto" src="<?php echo 'storage/'.$item->img;?>" >  </td>
                             <td>{{$item->nome}}</td>
                             <td>{{$item->descricao}}</td>
                             <td>{{$item->valor}}</td>
@@ -75,7 +75,7 @@
                                         foreach($images as $img){
                                             if($item->id == $img->id_user){
                                                 ?>
-                                                <li><img src="<?php echo asset('storage/'.$img->nome_arquivo); ?>"></li>
+                                                <li><img class="img_produto" src="<?php echo asset('storage/'.$img->nome_arquivo); ?>"></li>
                                                 <br>
                                                 <?php
                                             } 
