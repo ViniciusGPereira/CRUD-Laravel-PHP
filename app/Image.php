@@ -2,16 +2,19 @@
 
 namespace App;
 
-use App\Image;
+use App\Produto;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Produto extends Model
+class Image extends Model
 {
     // Impede que Laravel insira registros de tempo nos registros
     public $timestamps = false;
 
+    // Definindo nome da coluna id
+    protected $primaryKey = 'id_image';
+
     public function Image(): BelongsToMany {
-        return $this->belongsToMany(Image::class);
+        return $this->belongsToMany(Produto::class);
     }
 }

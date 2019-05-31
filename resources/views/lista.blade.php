@@ -18,7 +18,6 @@
                 <a href="" data-toggle="modal" data-target="#addModal" >+</a>
             </div>
         </div>
-
         <div class="conteudo">
             <table class="table table-hover">
                 @if(count($lista) > 0)
@@ -34,7 +33,13 @@
                     @foreach($lista as $item)
                     <tbody>
                         <tr>
-                            <td scope="row">{{$item->img}}</td>
+                            <td scope="row">
+                                @foreach($images as $imagem)
+                                    @if($item->id == $imagem->id_user)
+                                        <li>{{$imagem->nome_arquivo}}</li>
+                                    @endif
+                                @endforeach
+                            </td>
                             <td>{{$item->nome}}</td>
                             <td>{{$item->descricao}}</td>
                             <td>{{$item->valor}}</td>
@@ -71,10 +76,7 @@
                                             <input type="file"  name="imgP" id="imgP" placeholder="Nome do Produto">
                                         </div>
                                         <br><br>
-                                        <div class="custom-file">
-                                            <label for="file[]" >+ Imagens</label>
-                                            <input type="file" multiple name="file[]" id="img"  placeholder="Nome do Produto">
-                                        </div>
+                            
                                         <button type="submit" value="Enviar" class="btn btn-info btn-block" style="color:white;font-size:20px;"><b>Atualizar Produto</b></button>
                                     </form>
                                 </div>
@@ -116,15 +118,6 @@
                             <label for="valor">Valor</label>
                             <input type="number" step="0.01" required name="valor" id="valor" class="form-control" placeholder="Nome do Produto">
                         </div>
-                        <div class="custom-file">
-                            <label for="imgP"  >Imagem Principal</label>
-                            <input type="file"  name="imgP" id="imgP" placeholder="Nome do Produto">
-                        </div>
-                        <br><br>
-                        <div class="custom-file">
-                            <label for="file[]" >+ Imagens</label>
-                            <input type="file" multiple name="file[]" id="img"  placeholder="Nome do Produto">
-                        </div>
                         <button type="submit" value="Enviar" class="btn btn-info btn-block" style="color:white;font-size:20px;"><b>Adicionar Produto</b></button>
                     </form>
                 </div>
@@ -133,8 +126,8 @@
                 </div>
             </div>
         </div>
+        <br><br><br>
+        
     </div>
-
-    
 </body>
 </html>
