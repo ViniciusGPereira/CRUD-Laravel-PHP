@@ -33,13 +33,7 @@
                     @foreach($lista as $item)
                     <tbody>
                         <tr>
-                            <td scope="row">
-                                @foreach($images as $imagem)
-                                    @if($item->id == $imagem->id_user)
-                                        <li>{{$imagem->nome_arquivo}}</li>
-                                    @endif
-                                @endforeach
-                            </td>
+                            <td scope="row"><img src="<?php echo asset('storage/'.$item->img);?>" >  </td>
                             <td>{{$item->nome}}</td>
                             <td>{{$item->descricao}}</td>
                             <td>{{$item->valor}}</td>
@@ -76,7 +70,18 @@
                                             <input type="file"  name="imgP" id="imgP" placeholder="Nome do Produto">
                                         </div>
                                         <br><br>
-                            
+                                        <hr>
+                                        <?php 
+                                        foreach($images as $img){
+                                            if($item->id == $img->id_user){
+                                                ?>
+                                                <li><img src="<?php echo asset('storage/'.$img->nome_arquivo); ?>"></li>
+                                                <br>
+                                                <?php
+                                            } 
+                                        }
+                                      ?>
+
                                         <button type="submit" value="Enviar" class="btn btn-info btn-block" style="color:white;font-size:20px;"><b>Atualizar Produto</b></button>
                                     </form>
                                 </div>

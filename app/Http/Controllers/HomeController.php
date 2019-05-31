@@ -17,7 +17,7 @@ class HomeController extends Controller
         return view('lista', $array);
     }
 
-    public function add(Request $req){
+    public function add(Request $req){ 
         if($req->has('nome')){
             $nome = $req->input('nome');
             $desc = $req->input('descricao');
@@ -63,7 +63,7 @@ class HomeController extends Controller
 
                     // Relacionando o id gerado na tabela de produtos
                     $id_img = $add_img->where('nome_arquivo', $nome_arquivo)->get();
-                    $item->img = $id_img[0]->id_img;
+                    $item->img = $id_img[0]->nome_arquivo;
                 }
                 $item->save();
             }
