@@ -28,7 +28,7 @@ class HomeController extends Controller
             $add_prod->descricao = $desc;
             $add_prod->valor = $valor;
             // só pra testar sem erros
-            $add_prod->img = "false";
+            $add_prod->img = 'no_image.png';
             $add_prod->save();
         }
         return redirect('/');
@@ -53,7 +53,7 @@ class HomeController extends Controller
                     $nome_arquivo = hash("md5", date("Y-m-d H:i:s")) . $formato_img;
 
                     // Salvando na pasta App/Image/
-                    Storage::put('/image/'.$nome_arquivo, file_get_contents($file));
+                    Storage::put('/public/'.$nome_arquivo, file_get_contents($file));
 
                     // Adicionar a tabela de imagens
                     $add_img = new Image;
